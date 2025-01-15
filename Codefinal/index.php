@@ -42,6 +42,7 @@ if(isset($_SESSION['.K]=h{g8;n!P\CED']))
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+	<!-- logo de la page -->
     <div class="login-container">
         <div class="left-panel">
             <div class="header-left-panel" >
@@ -50,21 +51,27 @@ if(isset($_SESSION['.K]=h{g8;n!P\CED']))
                     <a href="index.php"><h4>FL</h4></a>
                 </div>
             </div>
+	    
             <div class="box-form-left-panel">
                 <div class="connecter" >
                     <h2>Se connecter</h2>
+		    <!-- choix de la connexion en interne ou externe -->
                     <h4><a href="#" id="Interne">Interne</a><a href="#" id="Externe">Externe</a></h4>
                 </div>
+		<!-- création du formulaire de connexion -->
                 <form action="#" method="POST" id="InterneForm" style="display:block;" >
+		    <!-- zone de saisie du mail -->
                     <div class="input-group">
                         <label for="email">E-mail</label>
                         <input type="email" id="email" name="EmailAdress" placeholder="email@example.com" required>
                     </div>
+		    <!-- zone de saisie du mot de passe -->
                     <div class="input-group password-group">
                         <label for="password">Mot de passe</label>
                         <input type="password" id="password" name="Password" placeholder="********" required>
                         <span class="toggle-password">👁</span>
                     </div>
+		    <!-- bouton inscription et mot de passe oublié --> 
                     <div class="forgot-password">
                         <h4><a href="Inscription.php">Inscrivez-vous</a> ou <a href="#">Mot de passe oublié ?</a></h4>
                     </div>
