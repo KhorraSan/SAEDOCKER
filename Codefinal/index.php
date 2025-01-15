@@ -57,7 +57,7 @@ if(isset($_SESSION['.K]=h{g8;n!P\CED']))
 		    <!-- choix de la connexion en interne ou externe -->
                     <h4><a href="#" id="Interne">Interne</a><a href="#" id="Externe">Externe</a></h4>
                 </div>
-		<!-- création du formulaire de connexion -->
+		<!-- création du formulaire de connexion pour les internes -->
                 <form action="#" method="POST" id="InterneForm" style="display:block;" >
 		    <!-- zone de saisie du mail -->
                     <div class="input-group">
@@ -74,24 +74,27 @@ if(isset($_SESSION['.K]=h{g8;n!P\CED']))
                     <div class="forgot-password">
                         <h4><a href="Inscription.php">Inscrivez-vous</a> ou <a href="#">Mot de passe oublié ?</a></h4>
                     </div>
+		    <!-- bouton de connexion pour les internes -->
                     <button type="submit" name="submitFormSignIn" class="btn-primary">Se connecter</button>
                 </form>
-		<!-- formulaire de connxeion pour les externes
+		<!-- formulaire de connexion pour les externes -->
                 <form action="#" method="POST" id="ExterneForm" style="display:none;" >
-                    <div class="input-group">
+		    <!-- zone de saisie du mail -->
+                    <div class="input-group">    
                         <label for="emailExterne">E-mail</label>
                         <input type="email" id="emailExterne" name="EmailAdressExterne" placeholder="emailexterne@example.com" required>
                     </div>
+		    <!-- zone de saisie du mot de passe -->
                     <div class="input-group password-group">
                         <label for="passwordExterne">Mot de passe</label>
                         <input type="password" id="passwordExterne" name="PasswordExterne" placeholder="********" required>
                         <span class="toggle-password">👁</span>
                     </div>
-		    <!-- bouton inscription et mot de passe oublié -->
+		    <!-- bouton inscription (redirection) et mot de passe oublié (rediretion) -->
                     <div class="forgot-password">
                         <h4><a href="#" style="color: #007BFF;" >Inscrivez-vous</a> ou <a href="#" style="color: #007BFF;" >Mot de passe oublié ?</a></h4>
                     </div>
-		    <!-- bouton connexion -->
+		    <!-- bouton connexion pour les externes -->
                     <button type="submit" name="submitFormSignInExterne" class="btn-primary" style="background-color: #007BFF;" >Se connecter</button>
                 </form>
             </div>
@@ -111,9 +114,11 @@ if(isset($_SESSION['.K]=h{g8;n!P\CED']))
 
 		if(!empty($_POST['EmailAdress']) AND !empty($_POST['Password'])) {
 
+			// recupération des variables Email et mot de passe
 			$checkingEmail = htmlspecialchars(strip_tags($_POST['EmailAdress'])) ;
 			$checkingPassword = htmlspecialchars(strip_tags($_POST['Password']));
-
+			
+			// chiffrement du mot de passe
 			$admin = connexionAdmin($checkingEmail,hash("sha256",$checkingPassword));
             
 			if($admin) {
@@ -133,7 +138,7 @@ if(isset($_SESSION['.K]=h{g8;n!P\CED']))
 	}
 
     if(isset($_POST['submitFormSignInExterne'])) {
-
+	// la condition vérifie que les champs EmailAddressExter et PasswordExterne ne sont pas vide
         if (!empty($_POST['EmailAdressExterne']) AND !empty($_POST['PasswordExterne'])) {
             echo "OK";
             $email = $_POST['EmailAdressExterne'] ; // L'e-mail à rechercher
