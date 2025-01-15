@@ -62,7 +62,7 @@ if(isset($_SESSION['.K]=h{g8;n!P\CED']))
 		    <!-- zone de saisie du mail -->
                     <div class="input-group">
                         <label for="email">E-mail</label>
-                        <input type="email" id="email" name="EmailAdress" placeholder="email@example.com" required>
+                        <input type="email" id="email" name="EmailAddress" placeholder="email@example.com" required>
                     </div>
 		    <!-- zone de saisie du mot de passe -->
                     <div class="input-group password-group">
@@ -78,7 +78,7 @@ if(isset($_SESSION['.K]=h{g8;n!P\CED']))
 		    <!-- zone de saisie du mail -->
                     <div class="input-group">    
                         <label for="emailExterne">E-mail</label>
-                        <input type="email" id="emailExterne" name="EmailAdressExterne" placeholder="emailexterne@example.com" required>
+                        <input type="email" id="emailExterne" name="EmailAddressExterne" placeholder="emailexterne@example.com" required>
                     </div>
 		    <!-- zone de saisie du mot de passe -->
                     <div class="input-group password-group">
@@ -108,10 +108,10 @@ if(isset($_SESSION['.K]=h{g8;n!P\CED']))
 <?php
 	if(isset($_POST['submitFormSignIn'])) {
 
-		if(!empty($_POST['EmailAdress']) AND !empty($_POST['Password'])) {
+		if(!empty($_POST['EmailAddress']) AND !empty($_POST['Password'])) {
 
 			// recupération des variables Email et mot de passe
-			$checkingEmail = htmlspecialchars(strip_tags($_POST['EmailAdress'])) ;
+			$checkingEmail = htmlspecialchars(strip_tags($_POST['EmailAddress'])) ;
 			$checkingPassword = htmlspecialchars(strip_tags($_POST['Password']));
 			
 			// chiffrement du mot de passe
@@ -135,9 +135,9 @@ if(isset($_SESSION['.K]=h{g8;n!P\CED']))
 
     if(isset($_POST['submitFormSignInExterne'])) {
 	// la condition vérifie que les champs EmailAddressExter et PasswordExterne ne sont pas vide
-        if (!empty($_POST['EmailAdressExterne']) AND !empty($_POST['PasswordExterne'])) {
+        if (!empty($_POST['EmailAddressExterne']) AND !empty($_POST['PasswordExterne'])) {
             echo "OK";
-            $email = $_POST['EmailAdressExterne'] ; // L'e-mail à rechercher
+            $email = $_POST['EmailAddressExterne'] ; // L'e-mail à rechercher
             $ldap_search_filter = "(mail=$email)";
             $ldap_admin_dn = "cn=admin,dc=example,dc=com";  // DN de l'administrateur LDAP
 
