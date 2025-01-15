@@ -70,10 +70,6 @@ if(isset($_SESSION['.K]=h{g8;n!P\CED']))
                         <input type="password" id="password" name="Password" placeholder="********" required>
                         <span class="toggle-password">👁</span>
                     </div>
-		    <!-- bouton inscription et mot de passe oublié --> 
-                    <div class="forgot-password">
-                        <h4><a href="Inscription.php">Inscrivez-vous</a> ou <a href="#">Mot de passe oublié ?</a></h4>
-                    </div>
 		    <!-- bouton de connexion pour les internes -->
                     <button type="submit" name="submitFormSignIn" class="btn-primary">Se connecter</button>
                 </form>
