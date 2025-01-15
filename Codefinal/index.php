@@ -4,7 +4,7 @@ session_start();
 
 require("config/creationdb.php");
 require("config/fonction.php");
-
+<!-- Session autorisé-->
 if(isset($_SESSION['.K]=h{g8;n!P\CED']))
 {
     if(!empty($_SESSION['.K]=h{g8;n!P\CED']))
@@ -50,8 +50,7 @@ if(isset($_SESSION['.K]=h{g8;n!P\CED']))
                     <img src="logo.png" alt="RoomFinder Logo">
                     <a href="index.php"><h4>FL</h4></a>
                 </div>
-            </div>
-	    
+            </div>   
             <div class="box-form-left-panel">
                 <div class="connecter" >
                     <h2>Se connecter</h2>
@@ -77,6 +76,7 @@ if(isset($_SESSION['.K]=h{g8;n!P\CED']))
                     </div>
                     <button type="submit" name="submitFormSignIn" class="btn-primary">Se connecter</button>
                 </form>
+		<!-- formulaire de connxeion pour les externes
                 <form action="#" method="POST" id="ExterneForm" style="display:none;" >
                     <div class="input-group">
                         <label for="emailExterne">E-mail</label>
@@ -87,9 +87,11 @@ if(isset($_SESSION['.K]=h{g8;n!P\CED']))
                         <input type="password" id="passwordExterne" name="PasswordExterne" placeholder="********" required>
                         <span class="toggle-password">👁</span>
                     </div>
+		    <!-- bouton inscription et mot de passe oublié -->
                     <div class="forgot-password">
                         <h4><a href="#" style="color: #007BFF;" >Inscrivez-vous</a> ou <a href="#" style="color: #007BFF;" >Mot de passe oublié ?</a></h4>
                     </div>
+		    <!-- bouton connexion -->
                     <button type="submit" name="submitFormSignInExterne" class="btn-primary" style="background-color: #007BFF;" >Se connecter</button>
                 </form>
             </div>
