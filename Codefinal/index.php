@@ -86,7 +86,7 @@ if(isset($_SESSION['.K]=h{g8;n!P\CED']))
                         <input type="password" id="passwordExterne" name="PasswordExterne" placeholder="********" required>
                         <span class="toggle-password">👁</span>
                     </div>
-		    <!-- bouton inscription (redirection) et mot de passe oublié (rediretion) -->
+		    <!-- bouton inscription (redirection) et mot de passe oublié (redirection) -->
                     <div class="forgot-password">
                         <h4><a href="#" style="color: #007BFF;" >Inscrivez-vous</a> ou <a href="#" style="color: #007BFF;" >Mot de passe oublié ?</a></h4>
                     </div>
