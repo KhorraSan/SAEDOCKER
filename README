@@ -23,3 +23,8 @@ finir et commencer :
  - Connexion avec un compte interne
  - Conclusion
  - Keycloak
+
+finir : 
+ - Intro -> logiciels utilisés
+ - Connexion avec un compte externe -> principe & application dans le code
+ - Inscription et mdp oublié -> principe pour les deux
