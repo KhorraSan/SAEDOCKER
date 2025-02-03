@@ -1,0 +1,106 @@
+version: '3.9'
+
+services:
+  www:
+    build: .
+    ports:
+      - "8000:80"
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - backend
+
+  db:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: docker
+      MYSQL_USER: etudiant
+      MYSQL_PASSWORD: vitrygtr
+      MYSQL_ROOT_PASSWORD: vitrygtr
+    networks:
+      - backend
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8001:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_USER: etudiant
+      MYSQL_PASSWORD: vitrygtr
+      MYSQL_ROOT_PASSWORD: vitrygtr
+    depends_on:
+      - db
+    networks:
+      - backend
+
+  ldap:
+    image: osixia/openldap:latest
+    container_name: ldap
+    environment:
+      LDAP_ORGANISATION: "My Organization"
+      LDAP_DOMAIN: "example.com"
+      # cn=admin,dc=example,dc=com
+      LDAP_ADMIN_PASSWORD: "adminpassword"
+    ports:
+      - "389:389"
+      - "636:636"
+    volumes:
+      - ldapData:/var/lib/ldap
+      - ldapConfig:/etc/ldap/slapd.d
+    networks:
+      - backend
+
+  ldap_admin:
+    image: osixia/phpldapadmin:latest
+    container_name: phpldapadmin
+    environment:
+      PHPLDAPADMIN_LDAP_HOSTS: ldap
+      PHPLDAPADMIN_HTTPS: "false"
+    ports:
+      - "8082:80"
+    depends_on:
+      - ldap
+    networks:
+      - backend
+
+  my-keycloak:
+    image: quay.io/keycloak/keycloak:24.0
+    environment:
+      KC_HOSTNAME: 192.168.1.103
+      KC_HOSTNAME_PORT: 7080
+      KC_HOSTNAME_STRICT_BACKCHANNEL: "true"
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_HEALTH_ENABLED: "true"
+      KC_LOG_LEVEL: info
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://192.168.1.103:7080/health/ready"]
+      interval: 15s
+      timeout: 2s
+      retries: 15
+    command: ["start-dev", "--http-port", "7080", "--https-port", "7443"]
+    ports:
+      - "7080:7080"
+      - "7443:7443"
+    volumes:
+      - keycloak_data:/opt/jboss/keycloak/standalone/data
+    networks:
+      - backend
+
+volumes:
+  db_data:
+  ldapData:
+  ldapConfig:
+  keycloak_data:
+  postgres_data:
+
+networks:
+  backend:
+    driver: bridge
