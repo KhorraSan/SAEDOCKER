@@ -20,3 +20,30 @@ sudo docker run hello-world
 
 IP_ADDRESS=$(ip a show wlp6s0 | awk '/inet / {print $2}' | cut -d'/' -f1)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
