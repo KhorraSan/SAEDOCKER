@@ -54,7 +54,7 @@ version: "3.9"
 
 services:
   www:
-    build: ./src
+    build: .
     ports:
       - "8000:80"
     volumes:
