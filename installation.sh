@@ -49,7 +49,7 @@ sudo mkdir -p $SRC_DIR
 
 
 echo "✍️ Création du fichier docker-compose.yml..."
-sudo bash -c 'cat <<EOF > $CONFIG_DIR/docker-compose.yml
+sudo tee $CONFIG_DIR/docker-compose.yml > /dev/null <<EOF
 version: "3.9"
 
 services:
@@ -124,7 +124,7 @@ services:
   my-keycloak:
     image: quay.io/keycloak/keycloak:24.0
     environment:
-      KC_HOSTNAME: '"$IP_ADDRESS"'
+      KC_HOSTNAME: "$(hostname -I | awk '{print $1}')"
       KC_HOSTNAME_PORT: 7080
       KC_HOSTNAME_STRICT_BACKCHANNEL: "true"
       KEYCLOAK_ADMIN: admin
@@ -132,7 +132,7 @@ services:
       KC_HEALTH_ENABLED: "true"
       KC_LOG_LEVEL: info
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://'"$IP_ADDRESS"':7080/health/ready"]
+      test: ["CMD", "curl", "-f", "http://$(hostname -I | awk '{print $1}'):7080/health/ready"]
       interval: 15s
       timeout: 2s
       retries: 15
@@ -155,7 +155,7 @@ volumes:
 networks:
   backend:
     driver: bridge
-EOF'
+EOF
 
 echo "✅ Fichier docker-compose.yml créé avec l'IP : $IP_ADDRESS"
 
