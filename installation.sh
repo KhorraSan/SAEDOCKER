@@ -41,8 +41,15 @@ echo "🌍 Récupération de l'adresse IP locale..."
 IP_ADDRESS=$(ip route get 1 | awk '{print $7; exit}')
 echo "🔍 Adresse IP détectée : $IP_ADDRESS"
 
+# Création du dossier de configuration Docker
+CONFIG_DIR="/etc/docker/Dockercompose"
+SRC_DIR="$CONFIG_DIR/src"
+echo "📁 Création des dossiers $CONFIG_DIR et $SRC_DIR..."
+sudo mkdir -p $SRC_DIR
+
+
 echo "✍️ Création du fichier docker-compose.yml..."
-cat <<EOF > docker-compose.yml
+sudo bash -c "cat <<EOF > $CONFIG_DIR/docker-compose.yml
 version: '3.9'
 
 services:
@@ -152,7 +159,14 @@ EOF
 
 echo "✅ Fichier docker-compose.yml créé avec l'IP : $IP_ADDRESS"
 
+echo "📦 Déplacement du Dockerfile vers $CONFIG_DIR..."
+sudo mv Dockerfile $CONFIG_DIR/
+
+echo "📂 Déplacement du dossier 'Docker' vers $SRC_DIR..."
+sudo mv Docker $SRC_DIR/
+
 echo "🚢 Démarrage des conteneurs Docker..."
+cd $CONFIG_DIR
 docker-compose up -d
 
 echo "✅ Tous les services sont en cours d'exécution."
