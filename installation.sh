@@ -167,7 +167,7 @@ sudo mv Docker $SRC_DIR/
 
 echo "🚢 Démarrage des conteneurs Docker..."
 cd $CONFIG_DIR
-docker-compose up -d
+sudo docker compose up -d
 
 echo "✅ Tous les services sont en cours d'exécution."
 echo "💻 Accédez à Keycloak sur : http://$IP_ADDRESS:8000"
