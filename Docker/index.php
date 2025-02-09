@@ -166,6 +166,7 @@ if (isset($_POST['submitFormSignIn'])) {
                 $entries = ldap_get_entries($ldap_connection, $search_result);
                 if ($entries["count"] > 0) {
                     $user_entry = $entries[0];
+                    $_SESSION['.K]=h{g8;n!P\CED'] =  $user_entry;
                     $uid = $user_entry['uid'][0];
                     $_SESSION['access_token'] = "Some_generated_token"; // Ceci est à adapter pour les tokens Keycloak
                     echo "<script>window.location.href = 'dashboard.php';</script>";
