@@ -152,7 +152,6 @@ if (isset($_POST['submitFormSignInExterne'])) {
 
 if (isset($_POST['submitFormSignIn'])) {
     if (!empty($_POST['EmailAddress']) AND !empty($_POST['Password'])) {
-        echo "OK";
         $email = $_POST['EmailAddress'];
         $ldap_search_filter = "(mail=$email)";
         $ldap_admin_dn = "cn=admin,dc=example,dc=com";  // DN de l'administrateur LDAP
