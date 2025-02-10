@@ -5,7 +5,7 @@ require("config/keycloack.php");
 
 // Vérifier si un code est présent dans l'URL
 if (isset($_GET['code'])) {
-    $accessToken = getAccessToken($_GET['code'];);
+    $accessToken = getAccessToken($_GET['code']);
     if ($accessToken) {
         // Si le token est valide, stocker le token dans la session
         $_SESSION['access_token'] = $accessToken;
@@ -13,26 +13,35 @@ if (isset($_GET['code'])) {
 }
 
 // Si l'utilisateur n'est pas connecté, rediriger vers la page de connexion index.php
-if (!isset($_SESSION['access_token'])) {
-	echo "<script>
-        window.location.href = 'index.php';
-        </script>";
-    exit();
-}
+//if (isset($_SESSION['access_token'])) {
+//    if (empty($_SESSION['access_token'])) {
+//	echo "<script>
+//        window.location.href = 'index.php';
+//        </script>";
+//    	exit();
+//    }
+//}
 
-if(isset($_SESSION['.K]=h{g8;n!P\CED']))
+if(!isset($_SESSION['.K]=h{g8;n!P\CED']) OR !isset($_SESSION['access_token']))
 {
-    if(!empty($_SESSION['.K]=h{g8;n!P\CED']))
+    if(!empty($_SESSION['.K]=h{g8;n!P\CED']) OR !empty($_SESSION['access_token']))
     {
-        if ($_SESSION['.K]=h{g8;n!P\CED']['acces'] == "Non Autoriser") {
-            echo "<script>
-            window.location.href = 'index.php';
-            </script>";
-        }
-    } else {
-	    echo "<script>
-            window.location.href = 'index.php';
-            </script>";
+        if(!empty($_SESSION['.K]=h{g8;n!P\CED'])) 
+	{
+	    if ($_SESSION['.K]=h{g8;n!P\CED']['acces'] == "Non Autoriser") 
+	    {
+            	echo "<script>
+            	window.location.href = 'index.php';
+            	</script>";
+	    	exit();
+	     }
+	}
+    } else 
+	{
+      echo "<script>
+      window.location.href = 'index.php';
+      </script>";
+
     }
 }
 $Url = getKeycloakLogoutUrl();
@@ -59,7 +68,7 @@ $Url = getKeycloakLogoutUrl();
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <title>FL - Se connecter</title>
+    <title>Optilocaux - Dashboard</title>
     <link rel="stylesheet" href="styles.css">
     <style>
 
@@ -107,14 +116,28 @@ $Url = getKeycloakLogoutUrl();
     <div class="logo-container">
         <!-- Remplacez l'URL de l'image par celle de votre logo -->
         <img src="logo.png" alt="Logo"> <!-- Logo -->
-        <h2>FL</h2> <!-- Titre -->
+        <h2>Optilocaux</h2> <!-- Titre -->
     </div>
 
     <div class="buttons">
-        <button>Accueil</button>
-        <button>Accès</button>
-        <button>Vider le Tableau</button>
-	<button onclick="window.location.href='<?php echo $Url; ?>'">Deconnexion</button>
+	<a href="#">
+           <button>Accueil</button>
+   	</a>
+     	<a href="">
+           <button>Accès</button>
+    	</a>
+	<a href="">
+           <button>Vider le Tableau</button>
+    	</a>
+	<a href="">
+           <button>Collaboration</button>
+    	</a>
+	<a href="">
+           <button>Panier</button>
+	</a>
+    	<a href="logout.php">
+           <button>Déconnexion</button>
+    	</a>
     </div>
 </header>
 

@@ -13,6 +13,12 @@ if (isset($_SESSION['.K]=h{g8;n!P\CED']) && !empty($_SESSION['.K]=h{g8;n!P\CED']
     }
 }
 
+if (isset($_SESSION['access_token']) && !empty($_SESSION['access_token'])) {
+    echo "<script>window.location.href = 'dashboard.php';</script>";
+    exit();
+}
+
+
 // 🔹 Vérifie si Keycloak a renvoyé un code d'autorisation
 if (isset($_GET['code'])) {
     $code = $_GET['code'];
@@ -69,7 +75,7 @@ $keycloakLoginUrl = getKeycloakLoginUrl();
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <title>FL - Se connecter</title>
+    <title>Optilocaux - Se connecter</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -77,8 +83,8 @@ $keycloakLoginUrl = getKeycloakLoginUrl();
         <div class="left-panel">
             <div class="header-left-panel">
                 <div class="logo">
-                    <img src="logo.png" alt="RoomFinder Logo">
-                    <a href="index.php"><h4>FL</h4></a>
+                    <img src="logo.png" alt="Optilocaux Logo">
+                    <a href="index.php"><h4>Optilocaux</h4></a>
                 </div>
             </div>
             <div class="box-form-left-panel">
