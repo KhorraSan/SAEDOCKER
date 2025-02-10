@@ -3,6 +3,23 @@
 session_start();
 require("config/keycloack.php");
 
+// Vérifier si un code est présent dans l'URL
+if (isset($_GET['code'])) {
+    $accessToken = getAccessToken($_GET['code'];);
+    if ($accessToken) {
+        // Si le token est valide, stocker le token dans la session
+        $_SESSION['access_token'] = $accessToken;
+    }
+}
+
+// Si l'utilisateur n'est pas connecté, rediriger vers la page de connexion index.php
+if (!isset($_SESSION['access_token'])) {
+	echo "<script>
+        window.location.href = 'index.php';
+        </script>";
+    exit();
+}
+
 if(isset($_SESSION['.K]=h{g8;n!P\CED']))
 {
     if(!empty($_SESSION['.K]=h{g8;n!P\CED']))
