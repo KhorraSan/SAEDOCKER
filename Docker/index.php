@@ -173,8 +173,6 @@ if (isset($_POST['submitFormSignIn'])) {
                     $user_entry = $entries[0];
                     $_SESSION['.K]=h{g8;n!P\CED'] =  $user_entry;
                     $_SESSION['.K]=h{g8;n!P\CED']['acces'] = "Autoriser";
-                    $uid = $user_entry['uid'][0];
-                    $_SESSION['access_token'] = "Some_generated_token"; // Ceci est à adapter pour les tokens Keycloak
                     echo "<script>window.location.href = 'dashboard.php';</script>";
                 } else {
                     echo "Utilisateur introuvable.";
