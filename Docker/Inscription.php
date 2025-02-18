@@ -36,7 +36,7 @@ if(isset($_SESSION['.K]=h{g8;n!P\CED']))
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <title>FL - Incription</title>
+    <title>Optilocaux - Inscription</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -45,7 +45,7 @@ if(isset($_SESSION['.K]=h{g8;n!P\CED']))
             <div class="header-left-panel" >
                 <div class="logo">
                     <img src="logo.png" alt="RoomFinder Logo">
-                    <a href="index.php"><h4>FL</h4></a>
+                    <a href="index.php"><h4>Optilocaux</h4></a>
                 </div>
             </div>
             <div class="box-form-left-panel">
