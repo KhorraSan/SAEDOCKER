@@ -121,7 +121,7 @@ $keycloakLoginUrl = getKeycloakLoginUrl();
                         <span class="toggle-password">👁</span>
                     </div>
                     <div class="forgot-password">
-                        <h4><a href="#" style="color: #007BFF;" >Inscrivez-vous</a> ou <a href="#" style="color: #007BFF;" >Mot de passe oublié ?</a></h4>
+                        <h4><a href="Inscription.php" style="color: #007BFF;" >Inscrivez-vous</a> ou <a href="#" style="color: #007BFF;" >Mot de passe oublié ?</a></h4>
                     </div>
                     <button type="submit" name="submitFormSignInExterne" class="btn-secondaire">Se connecter</button>
                     <div style="width:100%; heigth:100%;">
